@@ -2,28 +2,28 @@ require 'spec_helper'
 require 'rspec'
 require 'active_model'
 
-class BasicNipModel
+class BasicPeselModel
   include ActiveModel::Validations
 
-  attr_accessor :nip
+  attr_accessor :pesel
 
-  validates :nip, :presence => true, :nip => true
+  validates :pesel, :presence => true, :pesel => true
 end
 
   
-  describe "NipValidator" do
+  describe "PeselValidator" do
     before(:each) do
-      @model = BasicNipModel.new
+      @model = BasicPeselModel.new
     end
 
     it "should be valid" do
      @model.should_not be_valid 
-     @model.nip = "123-456-32-18"
+     @model.pesel = "44051401359"
      @model.should be_valid
     end
     
     it "should be invalid" do
-      @model.nip = "123-456-32-12"
+      @model.pesel = "44051401353"
       @model.should_not be_valid
     end
   end

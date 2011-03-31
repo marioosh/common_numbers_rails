@@ -2,28 +2,28 @@ require 'spec_helper'
 require 'rspec'
 require 'active_model'
 
-class BasicNipModel
+class BasicRegonModel
   include ActiveModel::Validations
 
-  attr_accessor :nip
+  attr_accessor :regon
 
-  validates :nip, :presence => true, :nip => true
+  validates :regon, :presence => true, :regon => true
 end
 
   
-  describe "NipValidator" do
+  describe "RegonValidator" do
     before(:each) do
-      @model = BasicNipModel.new
+      @model = BasicRegonModel.new
     end
 
     it "should be valid" do
      @model.should_not be_valid 
-     @model.nip = "123-456-32-18"
+     @model.regon = "192598184"
      @model.should be_valid
     end
     
     it "should be invalid" do
-      @model.nip = "123-456-32-12"
+      @model.regon = "192598183"
       @model.should_not be_valid
     end
   end
