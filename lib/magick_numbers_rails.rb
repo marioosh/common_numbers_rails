@@ -1,0 +1,3 @@
+module MagickNumbersRails
+  # Your code goes here...
+end
