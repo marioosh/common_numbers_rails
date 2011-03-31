@@ -16,10 +16,14 @@ end
       @model = BasicModel.new
     end
 
-    it "empty should be invalid" do
+    it "should be valid" do
      @model.should_not be_valid 
      @model.nip = "123-456-32-18"
      @model.should be_valid
     end
-
+    
+    it "should be invalid" do
+      @model.nip = "123-456-32-12"
+      @model.should_not be_valid
+    end
   end
