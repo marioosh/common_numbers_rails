@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Mariusz Nosinski"]
   s.email       = ["marioosh@5dots.pl"]
-  s.homepage    = ""
+  s.homepage    = "https://github.com/marioosh/magick_numbers_rails"
   s.summary     = %q{Rails 3 validators for magick numbers like PESEL, NIP, REGON}
   s.description = %q{Rails 3 validators for magick numbers like PESEL, NIP, REGON}
 
