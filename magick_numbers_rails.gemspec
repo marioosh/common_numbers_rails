@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.description = %q{Rails 3 validators for magick numbers like PESEL, NIP, REGON}
 
   s.add_dependency('magick_numbers', '>=0.1.3')
-  s.add_dependency('activemodel')
+  s.add_dependency('activemodel','>= 3.0.0')
 
   s.rubyforge_project = "magick_numbers_rails"
 
