@@ -31,3 +31,7 @@ For ActiveRecord Models:
 
 - I18n messages
 - validators for other numbers
+
+
+Copyright (c) 2011 Mariusz Nosiński, released under the MIT license
+
