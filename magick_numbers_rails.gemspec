@@ -6,11 +6,14 @@ Gem::Specification.new do |s|
   s.name        = "magick_numbers_rails"
   s.version     = MagickNumbersRails::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["TODO: Write your name"]
-  s.email       = ["TODO: Write your email address"]
+  s.authors     = ["Mariusz Nosinski"]
+  s.email       = ["marioosh@5dots.pl"]
   s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = %q{Rails 3 validators for magick numbers like PESEL, NIP, REGON}
+  s.description = %q{Rails 3 validators for magick numbers like PESEL, NIP, REGON}
+
+  s.add_dependency('magick_numbers', '>=0.1.3')
+  s.add_dependency('active_model')
 
   s.rubyforge_project = "magick_numbers_rails"
 
