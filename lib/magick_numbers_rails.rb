@@ -1,5 +1,8 @@
-Dir[File.expand_path(File.dirname(__FILE__) + '/magick_numbers_rails/**/*.rb')].each {|f| require f}
 require 'magick_numbers'
+require 'magick_numbers_rails/nip_validator'
+require 'magick_numbers_rails/pesel_validator'
+require 'magick_numbers_rails/regon_validator'
+
 module MagickNumbersRails
   # Your code goes here...
 end
