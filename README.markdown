@@ -1,6 +1,6 @@
-### MAGICK NUMBERS RAILS
+### COMMON NUMBERS RAILS
 
-This gem is wrapper on [magic_numbers](http://github.com/marioosh/magick_numbers) library that validates such numbers as:
+This gem is wrapper on [common_numbers](http://github.com/marioosh/common_numbers) library that validates such numbers as:
 
 - NIP (Polish Tax Identification Number)
 - PESEL (Polish ID Number)
@@ -15,11 +15,11 @@ in the future:
 
 In your Gemfile add:
     
-    gem 'magick_numbers_rails'
+    gem 'common_numbers_rails'
 
 ###Example:
 
-For standalone model use [magick_numbers](http://github.com/marioosh/magick_numbers) library
+For standalone model use [common_numbers](http://github.com/marioosh/common_numbers) library
 
 For ActiveRecord Models:
 
