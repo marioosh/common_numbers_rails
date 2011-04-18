@@ -24,12 +24,21 @@ For standalone model use [common_numbers](http://github.com/marioosh/common_numb
 For ActiveRecord Models:
 
     class Item < ActiveRecord::Base
-      validates :nip, :presence => true, :nip => true
+      validates :nip, :nip => true
+      validates :pesel, :pesel => true
+      validates :regon, :regon => true
     end
     
+You can also use helpers:
+
+    class Item < ActiveRecord::Base
+      validates_pesel_of :pesel_field
+      validates_pesel_of :pesel_field, :message => "Our custom message"
+    end
+
+
 ###TODO:
 
-- I18n messages
 - validators for other numbers
 
 
