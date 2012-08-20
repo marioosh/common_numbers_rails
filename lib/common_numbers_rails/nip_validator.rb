@@ -5,7 +5,7 @@ class NipValidator < ActiveModel::EachValidator
 
   def validate_each(record, attribute, value)
     @message = options[:message] || "invalid format"
-    record.errors[attribute] << @message unless CommonNumbers::Polish::Nip.new(value).valid?
+    record.errors.add(attribute,  @message) unless CommonNumbers::Polish::Nip.new(value).valid?
   end
 
 end
