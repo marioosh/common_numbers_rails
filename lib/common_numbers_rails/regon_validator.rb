@@ -5,7 +5,7 @@ class RegonValidator < ActiveModel::EachValidator
 
   def validate_each(record, attribute, value)
     @message = options[:message] || "invalid format"
-    record.errors[attribute] << "invalid format" unless CommonNumbers::Polish::Regon.new(value).valid?
+    record.errors.add(attribute,  @message) unless CommonNumbers::Polish::Regon.new(value).valid?
   end
 
 end
