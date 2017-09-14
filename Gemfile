@@ -1,4 +1,6 @@
-source "http://rubygems.org"
-gem "rspec"
-# Specify your gem's dependencies in magick_numbers_rails.gemspec
+source 'http://rubygems.org'
+
 gemspec
+
+gem 'rspec'
+gem 'rubocop'
