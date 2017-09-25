@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  development: &basic
+    build: .
+    volumes:
+      - .:/usr/src/gem
+  test:
+    <<: *basic
