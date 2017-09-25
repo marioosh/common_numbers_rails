@@ -1,64 +1,83 @@
 require 'spec_helper'
 
-class BasicNipModel
+class NipModel
   include ActiveModel::Validations
 
   attr_accessor :nip, :nip2
 
-  validates :nip, presence: true, nip: true
+  validates :nip, nip: true, allow_blank: true
 
-  validates_nip_of :nip2
+  validates_nip_of :nip2, allow_blank: true
 end
 
-describe 'NipValidator' do
-  before(:each) do
-    @valid_nip = '123-456-32-18'
-    @invalid_nip = '123-456-32-12'
+RSpec.describe NipModel do
+  let(:valid) { '123-456-32-18' }
 
-    @model = BasicNipModel.new
+  let(:invalid) { '123-456-32-12' }
+
+  describe 'nip1' do
+    context 'with blank attribute' do
+      it 'is expected to be valid' do
+        expect(subject).to be_valid
+      end
+    end
+
+    context 'with valid format' do
+      before do
+        subject.nip = valid
+      end
+
+      it 'is expected to be valid' do
+        expect(subject).to be_valid
+      end
+    end
+
+    context 'with invalid format' do
+      before do
+        subject.nip = invalid
+      end
+
+      it 'is expected to not be valid' do
+        expect(subject).to be_invalid
+      end
+
+      it 'is expected to have error message' do
+        expect(subject).to be_invalid
+        expect(subject.errors.messages[:nip]).to eq([I18n.t('errors.messages.not_a_nip')])
+      end
+    end
   end
 
-  describe 'with nip1' do
-    before(:each) do
-      @model.nip2 = @valid_nip
+  describe 'nip2' do
+    context 'with blank attribute' do
+      it 'is expected to be valid' do
+        expect(subject).to be_valid
+      end
     end
 
-    it 'should be valid' do
-      @model.should_not be_valid
-      @model.nip = @valid_nip
-      @model.should be_valid
+    context 'with valid format' do
+      before do
+        subject.nip2 = valid
+      end
+
+      it 'is expected to be valid' do
+        expect(subject).to be_valid
+      end
     end
 
-    it 'should be invalid' do
-      @model.nip = @invalid_nip
-      @model.should_not be_valid
-    end
-  end
+    context 'with invalid format' do
+      before do
+        subject.nip2 = invalid
+      end
 
-  describe 'with nip2' do
-    before(:each) do
-      @model.nip = @valid_nip
-    end
+      it 'is expected to not be valid' do
+        expect(subject).to be_invalid
+      end
 
-    it 'should be valid' do
-      @model.should be_invalid
-      @model.nip2 = @valid_nip
-      @model.should be_valid
-    end
-
-    it 'should be invalid when nil' do
-      @model.nip2 = nil
-      @model.should be_invalid
-    end
-
-    it 'should be invalid when empty' do
-      @model.nip2 = ''
-      @model.should be_invalid
-    end
-
-    it 'should be invalid when invalid NIP' do
-      @model.nip2 = @invalid_nip
-      @model.should be_invalid
+      it 'is expected to have error message' do
+        expect(subject).to be_invalid
+        expect(subject.errors.messages[:nip2]).to eq([I18n.t('errors.messages.not_a_nip')])
+      end
     end
   end
 end

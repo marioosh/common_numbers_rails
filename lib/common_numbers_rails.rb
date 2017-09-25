@@ -7,6 +7,5 @@ require 'active_support/i18n'
 require 'common_numbers_rails/version'
 require 'common_numbers_rails/engine' if defined?(Rails)
 
-
 module CommonNumbersRails
 end

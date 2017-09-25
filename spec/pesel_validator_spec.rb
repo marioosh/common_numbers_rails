@@ -1,62 +1,83 @@
 require 'spec_helper'
 
-class BasicPeselModel
+class PeselModel
   include ActiveModel::Validations
 
   attr_accessor :pesel, :pesel2
 
-  validates :pesel, presence: true, pesel: true
+  validates :pesel, pesel: true, allow_blank: true
 
-  validates_pesel_of :pesel2
+  validates_pesel_of :pesel2, allow_blank: true
 end
 
-describe 'PeselValidator' do
-  before(:each) do
-    @valid_pesel = '44051401359'
-    @invalid_pesel = '44051401353'
+RSpec.describe PeselModel do
+  let(:valid) { '44051401359' }
 
-    @model = BasicPeselModel.new
+  let(:invalid) { '44051401353' }
+
+  describe 'pesel1' do
+    context 'with blank attribute' do
+      it 'is expected to be valid' do
+        expect(subject).to be_valid
+      end
+    end
+
+    context 'with valid format' do
+      before do
+        subject.pesel = valid
+      end
+
+      it 'is expected to be valid' do
+        expect(subject).to be_valid
+      end
+    end
+
+    context 'with invalid format' do
+      before do
+        subject.pesel = invalid
+      end
+
+      it 'is expected to not be valid' do
+        expect(subject).to be_invalid
+      end
+
+      it 'is expected to have error message' do
+        expect(subject).to be_invalid
+        expect(subject.errors.messages[:pesel]).to eq([I18n.t('errors.messages.not_a_pesel')])
+      end
+    end
   end
-  describe 'with pesel' do
-    before(:each) do
-      @model.pesel2 = @valid_pesel
+
+  describe 'pesel2' do
+    context 'with blank attribute' do
+      it 'is expected to be valid' do
+        expect(subject).to be_valid
+      end
     end
 
-    it 'should be valid' do
-      @model.should_not be_valid
-      @model.pesel = @valid_pesel
-      @model.should be_valid
+    context 'with valid format' do
+      before do
+        subject.pesel2 = valid
+      end
+
+      it 'is expected to be valid' do
+        expect(subject).to be_valid
+      end
     end
 
-    it 'should be invalid' do
-      @model.pesel = @invalid_pesel
-      @model.should_not be_valid
-    end
-  end
+    context 'with invalid format' do
+      before do
+        subject.pesel2 = invalid
+      end
 
-  describe 'with pesel2' do
-    before(:each) do
-      @model.pesel = @valid_pesel
-    end
+      it 'is expected to not be valid' do
+        expect(subject).to be_invalid
+      end
 
-    it 'should be valid' do
-      @model.should be_invalid
-      @model.pesel2 = @valid_pesel
-      @model.should be_valid
-    end
-
-    it 'should be invalid when nil' do
-      @model.pesel2 = nil
-      @model.should be_invalid
-    end
-    it 'should be invalid when empty' do
-      @model.pesel2 = ''
-      @model.should be_invalid
-    end
-
-    it 'should be invalid when invalid number' do
-      @model.pesel2 = @invalid_pesel
-      @model.should be_invalid
+      it 'is expected to have error message' do
+        expect(subject).to be_invalid
+        expect(subject.errors.messages[:pesel2]).to eq([I18n.t('errors.messages.not_a_pesel')])
+      end
     end
   end
 end
