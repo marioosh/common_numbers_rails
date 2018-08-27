@@ -5,7 +5,13 @@ module ActiveModel
   module Validations
     class NipValidator < ActiveModel::EachValidator
       def validate_each(record, attribute, value)
-        record.errors.add(attribute, :not_a_nip, options) unless CommonNumbers::Polish::Nip.new(value).valid?
+        record.errors.add(attribute, :not_a_nip, options) unless validator.new(value).valid?
+      end
+
+      private
+
+      def validator
+        "CommonNumbers::Polish::#{options[:type].to_s.camelize}".constantize
       end
     end
 
