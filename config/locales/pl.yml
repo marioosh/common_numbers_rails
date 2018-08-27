@@ -1,0 +1,6 @@
+pl:
+  errors:
+    messages:
+      not_a_nip:              'nie jest poprawnym formatem NIP'
+      not_a_pesel:            'nie jest poprawnym formatem PESEL'
+      not_a_regon:            'nie jest poprawnym formatem REGON'

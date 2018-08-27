@@ -1,8 +1,11 @@
-require 'common_numbers'
-require 'common_numbers_rails/nip_validator'
-require 'common_numbers_rails/pesel_validator'
-require 'common_numbers_rails/regon_validator'
+require 'active_model/validations/nip_validator'
+require 'active_model/validations/pesel_validator'
+require 'active_model/validations/regon_validator'
+
+require 'active_support/i18n'
+
+require 'common_numbers_rails/version'
+require 'common_numbers_rails/engine' if defined?(Rails)
 
 module CommonNumbersRails
-  # Your code goes here...
 end
