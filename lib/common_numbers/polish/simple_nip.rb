@@ -15,7 +15,6 @@ module CommonNumbers
       end
 
       def validate_sum_control
-        magick_number.slice!(0..1) if international?
         mod = checksum % modulo
         mod === magick_array.shift
       end
