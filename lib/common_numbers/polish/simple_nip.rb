@@ -4,7 +4,7 @@ module CommonNumbers
 
       def initialize(num)
         @magick_number = num.to_s
-        @mask = [ 6, 5, 7, 2, 3, 4, 5, 6, 7]
+        @mask = [ 6, 5, 7, 2, 3, 4, 5, 6, 7 ]
         @modulo = 11
         @regexp = /^[0-9]{1,45}$/
 

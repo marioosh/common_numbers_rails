@@ -3,9 +3,9 @@ require 'active_model/validations'
 
 module ActiveModel
   module Validations
-    class NipValidator < ActiveModel::EachValidator
+    class SimpleNipValidator < ActiveModel::EachValidator
       def validate_each(record, attribute, value)
-        record.errors.add(attribute, :not_a_nip, options) unless CommonNumbers::Polish::Nip.new(value).valid?
+        record.errors.add(attribute, :not_a_nip, options) unless CommonNumbers::Polish::SimpleNip.new(value).valid?
       end
     end
 
