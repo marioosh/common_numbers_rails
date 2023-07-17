@@ -5,7 +5,11 @@ module ActiveModel
   module Validations
     class RegonValidator < ActiveModel::EachValidator
       def validate_each(record, attribute, value)
-        record.errors.add(attribute, :not_a_regon, options) unless CommonNumbers::Polish::Regon.new(value).valid?
+        if Gem::Version.new(RUBY_VERSION) < Gem::Version.new('3.0.0')
+          record.errors.add(attribute, :not_a_regon, options) unless CommonNumbers::Polish::Regon.new(value).valid?
+        else
+          record.errors.add(attribute, :not_a_regon, **options) unless CommonNumbers::Polish::Regon.new(value).valid?
+        end
       end
     end
 
